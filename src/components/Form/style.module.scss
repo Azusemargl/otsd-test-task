@@ -1,0 +1,10 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.form {
+   width: 5.5rem;
+
+   @include breakpoint($tablet) {
+      width: 4.5rem;
+   }
+}
