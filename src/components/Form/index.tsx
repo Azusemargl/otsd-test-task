@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { useInput } from '../../hooks'
-import { Button } from '..'
+import { Button, CalculateItem, Tag } from '..'
 import style from './style.module.scss'
 
 interface FormProps {
@@ -14,9 +14,23 @@ const Form: React.FC<FormProps> = ({ close }) => {
       number: true
    })
 
-   const empty = isDirty && isEmpty
+   const [activeTag, setActiveTag] = React.useState<"1" | "2">("1")
+   const [calculate, setCalculate] = React.useState(false)
+   const [checkMoney, setCheckMoney] = React.useState(false)
+   const [money, setMoney] = React.useState(0)
+
+   const empty = isDirty && isEmpty || checkMoney
    const error = !isNumber && isDirty && !isEmpty
-   
+
+   const onCalculate = () => {
+      if (value) {
+         setCalculate(true)
+         setMoney((+value * 12) * 0.13)
+      } else {
+         setCheckMoney(true)
+      }
+   }
+
    return (
       <div className={style.form}>
          <form className={style.form__popup}>
@@ -45,6 +59,21 @@ const Form: React.FC<FormProps> = ({ close }) => {
                         {empty && "Поле обязательно для заполнения"}
                      </span>
                   }
+               </div>
+               <p className={style.form__button__text} onClick={() => onCalculate()}>Рассчитать</p>
+               {calculate && (
+                  <div className={style.form__calculate}>
+                     <p className={style.form__text}>Итого можете внести в качестве досрочных:</p>
+                     <CalculateItem yaer="в 1-ый год" checked={true} money={money} />
+                     <CalculateItem yaer="в 2-ой год" checked={true} money={money} />
+                     <CalculateItem yaer="в 3-ый год" checked={true} money={money} />
+                     <CalculateItem yaer="в 4-ый год" checked={false} money={money} />
+                  </div>
+               )}
+               <div className={style.form__tags}>
+                  <p className={style.form__text}>Что уменьшаем?</p>
+                  <Tag id="1" activeTag={activeTag} setter={setActiveTag} />
+                  <Tag id="2" activeTag={activeTag} setter={setActiveTag} />
                </div>
                <Button background="full" type="submit" disabled={!isValid}>Добавить</Button>
             </div>

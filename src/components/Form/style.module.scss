@@ -77,10 +77,19 @@
       }
    }
 
+   &__text {
+      margin-right: 3.2rem;
+      font-weight: 600;
+   }
+
    &__input_group {
+      margin-bottom: 0.8rem;
+
       label {
          display: block;
          margin-bottom: 0.8rem;
+         font-weight: 600;
+         font-size: 1.4rem;
       }
    }
 
@@ -119,5 +128,29 @@
       display: block;
       font-size: 1rem;
       color: $red;
+   }
+
+   &__button {
+      &__text {
+         font-size: 1.4rem;
+         color: $red;
+         transition: color 0.1 linear;
+         cursor: pointer;
+
+         &:hover {
+            color: #F53A31;
+         }
+      }
+   }
+
+   &__calculate {
+      margin-top: 1.6rem;
+      margin-bottom: 2rem;
+   }
+
+   &__tags {
+      margin-top: 2.4rem;
+      display: flex;
+      align-items: center;
    }
 }
