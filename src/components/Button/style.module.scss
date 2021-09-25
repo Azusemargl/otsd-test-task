@@ -1,7 +1,9 @@
 @import '../../styles/vars';
 
 .button {
+   margin-top: 4rem;
    border-radius: 6px;
+   transition: all 0.1s linear;
 
    &__transparent {
       background-color: transparent;
@@ -29,10 +31,9 @@
    &.small {
       padding: 1.2rem 0;
    }
-
-   transition: all 0.1s linear;
-
+   
    &:disabled {
-      background-color: #BEC5CC;
+      background: #BEC5CC;
+      cursor: default;
    }
 }
