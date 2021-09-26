@@ -1,25 +1,24 @@
 import React from 'react'
 import classNames from 'classnames'
 import style from './style.module.scss'
-
-type TagId = "1" | "2"
+import { Minuend } from '../../models/Minuend'
 
 interface TagProps {
-   id: TagId
-   activeTag: TagId
-   setter: (value: TagId) => void
+   tag: Minuend
+   activeTag: Minuend
+   setter: (value: Minuend) => void
 }
 
-const Tag: React.FC<TagProps> = ({ id, activeTag, setter }) => {
+const Tag: React.FC<TagProps> = ({ tag, activeTag, setter, children }) => {
    return (
       <button
       className={classNames(style.tag, {
-         [style.active]: activeTag === id,
+         [style.active]: activeTag === tag,
       })}
-      onClick={() => setter(id)}
+      onClick={() => setter(tag)}
       type="button"
       >
-      Платёж
+      {children}
    </button>
    )
 }

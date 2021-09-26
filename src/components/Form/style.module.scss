@@ -20,7 +20,7 @@
       position: relative;
    
       @include breakpoint($tablet) {
-         width: 4.5rem;
+         width: 45rem;
       }
    }
 
@@ -144,8 +144,10 @@
    }
 
    &__calculate {
+      max-height: 28rem;
       margin-top: 1.6rem;
       margin-bottom: 2rem;
+      overflow-y: auto;
    }
 
    &__tags {
