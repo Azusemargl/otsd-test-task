@@ -41,7 +41,6 @@ const Form: React.FC<FormProps> = ({ close }) => {
 
             if (cash <= 0) deduction = maxCash - (deduction * (months - 1)) // Get cash for the last month
             
-            // setMoney(prev => [...prev, { id: i + 1, money: deduction, checked: false }])
             setYears({ id: i + 1, money: deduction, checked: false })
          }
 
