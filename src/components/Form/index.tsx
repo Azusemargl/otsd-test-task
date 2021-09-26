@@ -116,15 +116,15 @@ const Form: React.FC<FormProps> = ({ close }) => {
                   <Tag tag="Платёж" activeTag={activeTag} setter={setActiveTag}>Платёж</Tag>
                   <Tag tag="Срок" activeTag={activeTag} setter={setActiveTag}>Срок</Tag>
                </div>
-               <Button
-                  background="full"
-                  type="submit"
-                  disabled={!isValid || !salary || !currentCompare}
-                  onClick={e => onSubmit(e)}
-               >
-                  Добавить
-               </Button>
             </div>
+            <Button
+               background="full"
+               type="submit"
+               disabled={!isValid || !salary || !currentCompare}
+               onClick={e => onSubmit(e)}
+            >
+               Добавить
+            </Button>
          </form>
       </div>
    )
